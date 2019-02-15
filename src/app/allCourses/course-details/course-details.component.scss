@@ -1,0 +1,57 @@
+@import '../../../assets/sass/helpers/0-helpers';
+
+.courseImage {
+  img {
+    width: 100px;
+    height: auto;
+  }
+}
+
+.metaInfo {
+  margin-bottom: $margin-20;
+
+  .infoTitle {
+    margin: 0;
+    color: $black;
+  }
+}
+
+.topicPrize {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.75rem 1.25rem;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: right
+}
+
+.topicTitle {
+  font-size: 20px;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.ti-file {
+  @include rounded($second-color, 8px, 50%);
+}
+
+.topicTitleLink {
+  color: $second-color !important;
+}
+
+.courseImage {
+
+  // margin-bottom: 20px;
+  .media {
+    .media-body {
+      small {
+        display: block;
+      }
+    }
+  }
+}
+
+.courseDescription {
+  margin: $margin-20 0;
+}

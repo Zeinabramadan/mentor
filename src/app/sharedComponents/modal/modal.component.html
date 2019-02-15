@@ -1,0 +1,13 @@
+<div class="modal show" id="modal" style="display: block;">
+  <div class="modal_content">
+    <div class="modal_heading">
+      <h3>{{modalHeader}}</h3>
+      <div class="close_button" (click)="closeModal()">
+        <i class="ti ti-close"></i>
+      </div>
+    </div>
+    <div class="modal_body">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

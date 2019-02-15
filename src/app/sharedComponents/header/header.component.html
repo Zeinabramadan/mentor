@@ -1,0 +1,18 @@
+<header class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+  <h1 class="navbar-brand col-sm-3 col-md-2 m-0">Mentor</h1>
+  <!-- <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search"> -->
+  <ul class="navbar-nav px-3">
+    <li class="nav-item">
+      <a class="nav-link text-capitalize"><i class="ti ti-user"></i>{{user.name}}</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"><img src="../../../assets/images/money-bag.svg" class="userCoins" alt="coins" />{{user.gold}}</a>
+    </li>
+    <!-- <li class="nav-item">
+      <a class="nav-link" (click)="changeDir()">عربى</a>
+    </li> -->
+    <li class="nav-item">
+      <a class="nav-link" (click)="logOut()"><i class="ti ti-lock"></i>Log out</a>
+    </li>
+  </ul>
+</header>

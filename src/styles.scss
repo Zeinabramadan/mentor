@@ -1,0 +1,243 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/bootstrap.scss";
+@import './assets//sass/helpers/0-helpers';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+$mat-red: (50: #ffebee,
+100: #ffcdd2,
+200: #ef9a9a,
+300: #e57373,
+400: #ef5350,
+500: #ff3d71,
+600: #e53935,
+700: #d32f2f,
+800: #c62828,
+900: #b71c1c,
+A100: #ff8a80,
+A200: #ff5252,
+A400: #ff1744,
+A700: #ff3d71,
+contrast: (50: $dark-primary-text,
+100: $dark-primary-text,
+200: $dark-primary-text,
+300: $dark-primary-text,
+400: $dark-primary-text,
+500: $light-primary-text,
+600: $light-primary-text,
+700: $light-primary-text,
+800: $light-primary-text,
+900: $light-primary-text,
+A100: $dark-primary-text,
+A200: $light-primary-text,
+A400: $light-primary-text,
+A700: $light-primary-text,
+));
+
+$candy-app-primary: mat-palette($mat-cyan, 600);
+$candy-app-warn: mat-palette($mat-pink);
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-warn);
+@include angular-material-theme($candy-app-theme);
+
+@font-face {
+  font-family: cocon;
+  src: url('../src/assets/fonts/cocon.ttf');
+}
+
+body {
+  background-color: $bgGrey;
+  font-size: 1rem;
+
+  &.ltr {
+    font-family: 'Exo', sans-serif;
+
+    .mat-table {
+      font-family: 'Exo', sans-serif;
+    }
+  }
+
+  &.rtl {
+    font-family: 'cocon', sans-serif;
+
+    .mat-table {
+      font-family: 'cocon', sans-serif;
+    }
+  }
+}
+
+h1 {
+  font-size: 2rem
+}
+
+.badge {
+  font-size: 90%;
+  padding: 0.5em 0.4em;
+}
+
+p {
+  color: $darkGrey;
+  word-break: break-word;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+}
+
+input.form-control,
+textarea.form-control,
+select.form-control {
+  font-family: 'Roboto', sans-serif !important;
+  outline: 0 !important;
+  border-width: 1px;
+  transition: all .5s ease-in-out;
+  padding: 1.35rem 1.125rem;
+  border-color: $borderColor;
+
+  &:focus {
+    outline: none !important;
+    border-color: $main-color;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+
+    &::-webkit-input-placeholder {
+      opacity: 0;
+    }
+  }
+}
+
+select {
+  height: 100% !important;
+}
+
+::-webkit-input-placeholder {
+  color: $borderColor !important;
+  font-weight: normal;
+  font-size: 15px;
+  transition: all .3s ease-in-out;
+}
+
+
+a {
+  cursor: pointer;
+}
+
+.btn-outline-primary {
+  border-color: $main-color;
+  color: $main-color !important;
+
+  &:hover {
+    background-color: $main-color;
+    border-color: $main-color;
+    color: $white !important;
+  }
+}
+
+.btn-primary {
+  color: $white !important;
+}
+
+.ltr {
+  .float-right {
+    float: right !important;
+  }
+
+  .float-left {
+    float: left !important;
+  }
+
+  .ml-sm-auto,
+  .mx-sm-auto {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+  }
+}
+
+.bold {
+  font-weight: $bold !important;
+}
+
+.form-btns {
+  .btn {
+    margin: 0 5px;
+  }
+}
+
+.rtl {
+  ul {
+    padding: 0;
+  }
+
+  .float-right {
+    float: left !important;
+  }
+
+  .float-left {
+    float: right !important;
+  }
+
+  .ml-sm-auto,
+  .mx-sm-auto {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+  }
+}
+
+.alert {
+  margin: 10px 0;
+  padding: 0.25rem .50rem;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif !important;
+  border-color: transparent;
+
+  &.alert-danger {
+    color: #ff3d71;
+  }
+}
+
+.coin {
+  width: 16px;
+  height: auto;
+}
+
+.cursor {
+  cursor: pointer
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.mat-cell {
+  word-break: break-word;
+}
+
+.mainColor {
+  color: $main-color;
+}
+
+.mat-progress-spinner {
+  top: 200px;
+  left: 50%;
+}
+
+.mat-progress-spinner.mat-accent circle,
+.mat-spinner.mat-accent circle {
+  stroke: $main-color;
+}
+
+.control {
+  @include customControlBtn;
+}
+
+.view {
+  cursor: pointer;
+}
+
+blockquote {
+  p {
+        padding: .66001rem 1rem 1rem;
+    border-left: 3px solid #a0aabf;
+  }
+}

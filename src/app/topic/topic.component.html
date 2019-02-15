@@ -1,0 +1,113 @@
+<mat-spinner color="accent" *ngIf="load"></mat-spinner>
+
+<div class="row topicDetails" *ngIf="data">
+  <div class="col-lg-9 col-md-8">
+    <section>
+      <header class="topicTitle">
+        <h2 class="text-capitalize bold">{{ lesson.title }}</h2>
+        <small class="text-muted"><i class="ti ti-time"></i> {{lesson.createdAt.format}}</small>
+      </header>
+      <p class="topicDesc">{{ lesson.description }}</p>
+      <div class="metaInfo">
+        <h3 class="infoTitle">Quest</h3>
+      </div>
+      <p class="topicQuest">{{ lesson.quest }}</p>
+    </section>
+
+    <div *ngIf="approvedAnswers.length > 0">
+      <h4 class="answersTitle bold">Answers</h4>
+      <div class="card" *ngFor="let answer of approvedAnswers">
+        <div class="card-body">
+          <div class="d-flex justify-content-between mb-3">
+            <div class="answerMeta">
+              <span>By: <span class="mainColor text-capitalize mr-2">{{ answer.by.name }}</span></span>
+              <small class="text-muted d-block"><i class="ti ti-time"></i> {{ answer.createdAt.format }}</small>
+            </div>
+            <div>
+              <span class="text-muted text-capitalize" *ngIf="user.accountType === 'admin'">{{ answer.status }} </span>
+              <!-- <span class="text-info" matTooltip="Edit your answer" matTooltipPosition="above" *ngIf="answer.by.id === user.id && answer.status != 'pending'"
+                (click)="editAnswer(answer.id, answer.answer)">
+                <i class="ti ti-pencil-alt"></i>
+              </span> -->
+            </div>
+          </div>
+          <span>{{ answer.answer }} </span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="currentUserAnswer.length > 0">
+      <h4 class="answersTitle bold">Your answer</h4>
+      <div class="card" *ngFor="let answer of currentUserAnswer">
+        <div class="card-body">
+          <div class="d-flex justify-content-between mb-3">
+            <div class="answerMeta">
+              <span>By: <span class="mainColor text-capitalize mr-2">{{ answer.by.name }}</span></span>
+              <small class="text-muted d-block"><i class="ti ti-time"></i> {{ answer.createdAt.format }}</small>
+            </div>
+            <div>
+              <span class="text-muted" *ngIf="user.accountType === 'admin'">{{ answer.status }} </span>
+              <span class="text-info cursor" matTooltip="Edit your answer" matTooltipPosition="above" *ngIf="answer.by.id === user.id && answer.status == 'rejected'"
+                (click)="editAnswer(answer.id, answer.answer)">
+                <i class="ti ti-pencil-alt"></i>
+              </span>
+            </div>
+          </div>
+          <markdown>{{ answer.answer }} </markdown>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <button *ngIf="startQuest" class="btn text-uppercase" [ngClass]="btns" (click)="showQuestAnswer()" [disabled]="disableQuestBtn">
+        {{ openAnswerText ? 'Cancel' : 'Start quest' }}
+      </button>
+    </div>
+
+
+    <div *ngIf="answerStatus">
+      <span>Your answer is: </span>
+      <div class="answerStatus mb-4">
+        <markdown>{{ answerData.answer }}</markdown>
+      </div>
+    </div>
+
+    <div class="answerForm">
+      <form *ngIf="openAnswerText" (ngSubmit)="submitAnswer()" #f="ngForm">
+        <textarea rows="8" required data-gramm_editor="false" #answer="ngModel" [(ngModel)]="answerData.answer" name="questAnswer"
+          placeholder="Write your answer ;)" class="form-control mb-4" dir="auto"></textarea>
+        <button type="submit" class="btn btn-primary float-right" [disabled]="!f.valid">
+          Send
+        </button>
+      </form>
+      <button *ngIf="cancelBtn" class="btn btn-danger float-right mr-2" (click)="openAnswerText = !openAnswerText; cancelBtn = false">
+        Cancel
+      </button>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-4 text-center">
+    <div class="card">
+      <div class="card-body">
+        <div *ngIf="approveMsg.show" class="mb-3">
+          <span class="badge text-uppercase" [ngClass]="{
+              'badge-warning': approveMsg.status === 'pending' || approveMsg.status === 'Waiting for approve',
+              'badge-danger': approveMsg.status === 'rejected',
+              'badge-success': approveMsg.status === 'approved'
+            }">{{
+            approveMsg.status }}
+            <i *ngIf="approveMsg.status === 'rejected'" class="ti ti-face-sad"></i>
+            <i *ngIf="approveMsg.status === 'approved'" class="ti ti-face-smile"></i>
+          </span>
+          <span *ngIf="approveMsg.status === 'rejected'">{{approveMsg.msg}}</span>
+        </div>
+
+        <div class="lessonEsTime">
+          <span class="d-block">Reward</span>
+          <span><img src="../../assets/images/coins.svg" class="coin" alt="coins" />{{
+            lesson.prize
+            }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+@import '../../../assets/sass/helpers/0-helpers';
+
+.adminCourses {
+  h2 {
+    font-size: 20px;
+  }
+
+  p {
+    @include ellipses;
+  }
+
+  .lesson {
+    display: block;
+
+    div {
+      margin: 5px 0;
+    }
+  }
+
+  .mat-row {
+    padding: 10px 0;
+  }
+
+  .mat-column-id {
+    flex-basis: 1%;
+  }
+
+  .mat-column-description {
+    flex-basis: 26%;
+  }
+
+  img {
+    max-width: 50px;
+    height: auto;
+  }
+}

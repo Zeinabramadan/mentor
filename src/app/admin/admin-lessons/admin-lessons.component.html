@@ -1,0 +1,119 @@
+<div class="row adminlessons">
+  <div class="col-md-12">
+    <div class="adminMeta d-flex justify-content-between mb-4 align-content-center">
+      <h2 class="mb-0 bold">{{courseName}} topics</h2>
+      <button class="btn btn-primary" (click)="lessonData = {}; openAddModal = true; header = 'New topic'; editMode = false; addSaveBtn = 'Add'"><i
+          class="ti ti-plus"></i>Add new topic
+      </button>
+      <app-modal *ngIf="openAddModal" [modalHeader]="header" (hideModal)="executeOnClose($event)">
+        <form (ngSubmit)="submit(f.value)" #f="ngForm">
+          <div class="form-group">
+            <input type="title" required #title="ngModel" name="title" placeholder="Title" class="form-control"
+              [(ngModel)]="lessonData.title" title />
+            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+              <span *ngIf="title.errors.required">Title is required</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea rows="3" data-gramm_editor="false" #shortDescription="ngModel" placeholder="Write a short description"
+              class="form-control" name="shortDescription" [(ngModel)]="lessonData.shortDescription"></textarea>
+            <!-- <div *ngIf="shortDescription.invalid && (shortDescription.dirty || shortDescription.touched)" class="alert alert-danger">
+              <span *ngIf="shortDescription.errors.required">Short description is required</span>
+            </div> -->
+          </div>
+          <!-- <div class="form-group">
+            <textarea rows="5" data-gramm_editor="false" required #description="ngModel" placeholder="Description"
+              class="form-control" name="description" [(ngModel)]="lessonData.description"></textarea>
+            <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+              <span *ngIf="description.errors.required">Description is required</span>
+            </div>
+          </div> -->
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <textarea rows="5" class="form-control" required placeholder="Quest" type="text" name="quest" #quest="ngModel"
+                  [(ngModel)]="lessonData.quest"></textarea>
+                <div *ngIf="quest.invalid && (quest.dirty || quest.touched)" class="alert alert-danger">
+                  <span *ngIf="quest.errors.required">Quest is required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <input class="form-control" required placeholder="Prize" type="number" name="prize" #prize="ngModel"
+                  [(ngModel)]="lessonData.prize">
+                <div *ngIf="prize.invalid && (prize.dirty || prize.touched)" class="alert alert-danger">
+                  <span *ngIf="prize.errors.required">Prize is required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <input class="form-control" required placeholder="Order" type="number" name="sortOrder" #sortOrder="ngModel"
+                  [(ngModel)]="lessonData.sortOrder">
+                <div *ngIf="sortOrder.invalid && (sortOrder.dirty || sortOrder.touched)" class="alert alert-danger">
+                  <span *ngIf="sortOrder.errors.required">Order is required</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-btns d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary" [disabled]="!f.valid || disabled">{{addSaveBtn}}</button>
+            <button type="button" class="btn text-dark btn-outline-light bold" (click)="closeModal()">Cancel</button>
+          </div>
+        </form>
+      </app-modal>
+    </div>
+
+    <mat-table [dataSource]="lessons">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>#ID</mat-header-cell>
+        <mat-cell *matCellDef="let lesson">{{lesson.id}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+        <mat-cell *matCellDef="let lesson">{{lesson.title}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="quest">
+        <mat-header-cell *matHeaderCellDef>Quest</mat-header-cell>
+        <mat-cell *matCellDef="let lesson">
+          <p>{{lesson.quest}}</p>
+        </mat-cell>
+      </ng-container>
+      <!-- <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+        <mat-cell *matCellDef="let lesson">
+          <p>{{lesson.description}}</p>
+        </mat-cell>
+      </ng-container> -->
+
+      <ng-container matColumnDef="sortorder">
+        <mat-header-cell *matHeaderCellDef>Sort order</mat-header-cell>
+        <mat-cell *matCellDef="let lesson">
+          <p>{{lesson.sortOrder}}</p>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="prize">
+        <mat-header-cell *matHeaderCellDef>Prize</mat-header-cell>
+        <mat-cell *matCellDef="let lesson"><span>{{lesson.prize}}</span></mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="controls">
+        <mat-header-cell *matHeaderCellDef>Control</mat-header-cell>
+        <mat-cell *matCellDef="let lesson">
+          <span matTooltip="Edit" matTooltipPosition="above" class="control text-primary mr-2 ml-2" (click)="lessonData = lesson; openAddModal = true; header = 'Edit topic'; editMode = true; addSaveBtn = 'Save'"><i
+              class="ti ti-pencil-alt"></i></span>
+          <span matTooltip="Delete" matTooltipPosition="above" class="control text-danger" (click)="deleteLesson(lesson)"><i
+              class="ti ti-trash"></i></span>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+    <mat-paginator [length]="10" [pageSize]="10" [pageSizeOptions]="[5,10,15,20,25]" [showFirstLastButtons]="true">
+    </mat-paginator>
+
+  </div>
+</div>

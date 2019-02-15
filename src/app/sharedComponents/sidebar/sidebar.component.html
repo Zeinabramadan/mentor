@@ -1,0 +1,68 @@
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column" *ngIf="user">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <i class="ti ti-home"></i>
+          Dashboard <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/dashboard/courses">
+          <i class="ti ti-agenda"></i> Courses list </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="'my-courses'"> <i class="ti ti-file"></i>My courses
+        </a>
+      </li>
+    </ul>
+
+    <ul class="nav flex-column" *ngIf="admin">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <i class="ti ti-home"></i>
+          Dashboard <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/dashboard/courses">
+          <i class="ti ti-agenda"></i> Courses list </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/dashboard/my-courses"> <i class="ti ti-file"></i>My
+          courses
+        </a>
+      </li>
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        <span>General Settings</span>
+        <a class="d-flex align-items-center text-muted" href="#"> </a>
+      </h6>
+      <ul class="nav flex-column mb-2">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/admin/users">
+            <i class="ti ti-user"></i> Manage users </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/admin/courses"> <i class="ti ti-file"></i>Manage
+            courses
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/admin/answers">
+            <i class="ti ti-comment-alt"></i> Pending answers</a>
+        </li>
+      </ul>
+
+    </ul>
+
+    <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <span>General Settings</span>
+      <a class="d-flex align-items-center text-muted" href="#"> </a>
+    </h6>
+    <ul class="nav flex-column mb-2">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="#"><i class="ti ti-settings"></i> Settings </a>
+      </li>
+    </ul> -->
+  </div>
+</nav>

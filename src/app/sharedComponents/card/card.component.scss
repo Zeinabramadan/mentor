@@ -1,0 +1,70 @@
+@import '../../../assets/sass/helpers/0-helpers';
+
+.card {
+
+  .imgCourse {
+    width: 100%;
+    height: auto;
+  }
+
+
+  transition-delay: .35s !important;
+
+  &:hover {
+    .courseInfo {
+      visibility: visible;
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      transition: .3s ease;
+      height: 100%;
+      overflow-y: scroll;
+      max-height: 100%;
+    }
+  }
+
+  .courseStatus {
+    position: absolute;
+    top: 0;
+    border-radius: 0;
+  }
+
+  .courseInfoTitle {
+    a {
+      color: $second-color;
+
+      h4 {
+        font-size: 18px;
+        line-height: 22px;
+        font-weight: 600;
+        margin: 0 0 15px;
+      }
+    }
+  }
+
+  .courseInfo {
+    position: absolute;
+    top: -10px;
+    left: -50px;
+    right: -50px;
+    padding: 30px 40px;
+    background-color: #fff;
+    box-shadow: 0 10px 30px 11px rgba(0, 0, 0, .25);
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+    z-index: 100;
+    transition: none;
+
+    .courseInfoMeta {
+      font-weight: bold;
+
+      .courseSingleMeta {
+        i {
+          color: $second-color;
+        }
+      }
+    }
+  }
+}

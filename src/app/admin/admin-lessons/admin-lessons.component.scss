@@ -1,0 +1,14 @@
+@import '../../../assets/sass/helpers/0-helpers';
+
+
+.mat-column-quest {
+  flex-basis: 30%;
+}
+
+p {
+  @include ellipses;
+}
+
+h2 {
+  font-size: 20px;
+}

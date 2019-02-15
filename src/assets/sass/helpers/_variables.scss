@@ -1,0 +1,21 @@
+// Main variables
+$black: #2c2f3b;
+$white: #fff;
+$grey: #DADADA;
+
+$darkGrey: #4b4b4b;
+$bgGrey: #f1f5f8;
+$borderColor: #dadfe6;
+
+$dangerColor: #ff3d71;
+
+$lightenGrey: #efeeee6b;
+$main-color: #5dcfe3;
+$second-color: #73a1ff;
+
+$margin-20: 20px;
+
+$bold: bold;
+$darker-main-color: darken($main-color, 5%);
+$lighter-main-color: lighten($main-color, 5%);
+$transparent-main-color: transparentize($main-color, .3);

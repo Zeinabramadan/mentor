@@ -1,0 +1,37 @@
+@import '../../assets/sass/helpers/0-helpers';
+
+.topicDetails {
+  .topicTitle {
+    h2 {
+      color: $black;
+      margin: 0;
+    }
+  }
+
+  .topicDesc {
+    margin: $margin-20 0;
+  }
+}
+.answersTitle {
+  font-size: 16px;
+}
+.answerStatus {
+  background: $white;
+  padding: 12px;
+  max-height: 200px;
+  border-radius: 5px;
+  overflow-y: scroll;
+  position: relative;
+
+  p {
+    word-break: break-word
+  }
+}
+
+.metaInfo {
+  margin-bottom: $margin-20;
+
+  .infoTitle {
+    margin: 0;
+  }
+}

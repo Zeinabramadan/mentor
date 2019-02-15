@@ -1,0 +1,28 @@
+@import '../../../assets/sass/helpers/0-helpers';
+
+.authLayout {
+  .alert {
+    margin: 0 !important;
+  }
+  padding: 2.5rem;
+
+  .auth {
+    padding: 8rem 1.5rem;
+    height: calc(100vh - 2 * 2.5rem);
+    width: 100%;
+    background-color: $white;
+    overflow-y: auto;
+    border: 1px solid $borderColor;
+    @include border-radius(5px);
+
+    .authForm {
+      max-width: 35rem;
+      margin: auto;
+    }
+
+    .authTitle {
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+  }
+}

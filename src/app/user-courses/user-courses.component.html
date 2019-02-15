@@ -1,0 +1,50 @@
+<!-- <mat-spinner color="accent" *ngIf="load"></mat-spinner> -->
+<mat-spinner color="accent" *ngIf="load"></mat-spinner>
+
+<div class="row allCourses" *ngIf="data">
+  <div class="w-100" *ngIf="noCourses">
+    <div class="alert alert-info">
+      <p class="mb-0">You haven't subscribed to any courses yet.</p>
+    </div>
+    <a (click)="viewAllCourses()" class="btn btn-primary">View Courses</a>
+  </div>
+  <div class="col-lg-3 col-md-6" *ngFor="let course of courses">
+    <div class="card">
+      <img class="imgCourse" [src]="course.image" [alt]="course.name" />
+      <div class="courseInfoTitle card-body">
+        <a>
+          <h4 class="text-capitalize">{{ course.name }}</h4>
+        </a>
+        <div class="courseInfoMeta d-flex justify-content-between pt-4 border-top">
+          <span class="courseSingleMeta">
+            <i class="ti ti-list"></i> {{ course.topics.length }}</span>
+          <span class="courseSingleMeta">
+            <img src="../../assets//images/coins.svg" class="coin" alt="coins" />
+            {{ course.cost }}</span>
+        </div>
+      </div>
+      <div class="courseInfo">
+        <div class="courseInfoTitle">
+          <a (click)="viewCourse(course.id)">
+            <h4 class="text-capitalize">{{ course.name }}</h4>
+          </a>
+        </div>
+        <div class="courseInfoDescription">
+          <p class="pt-4">{{ course.description }}</p>
+        </div>
+        <div class="courseInfoMeta d-flex justify-content-between pt-4 pb-4">
+          <span class="courseSingleMeta">
+            <i class="ti ti-list"></i> {{ course.topics.length }}</span>
+          <span class="courseSingleMeta">
+            <img src="../../assets/images/coins.svg" class="coin" alt="coins" />
+            {{ course.cost }}</span>
+        </div>
+        <div class="coursePreview">
+          <a (click)="viewCourse(course.id)" class="btn btn-primary btn-block">
+            Preview this course
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

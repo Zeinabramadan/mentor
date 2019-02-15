@@ -1,0 +1,70 @@
+<div class="row adminAnswers">
+  <div class="col-md-12">
+    <div class="adminMeta d-flex justify-content-between mb-4">
+      <h2 class="mb-0 bold">Pending answers</h2>
+      <app-modal *ngIf="openAddModal" [modalHeader]="header" (hideModal)="executeOnClose($event)">
+        <markdown>{{answerData.answer}}</markdown>
+        <form (ngSubmit)="submit(f.value)" #f="ngForm">
+          <div class="row mb-2">
+            <div class="col-md-6">
+              <select class="form-control" [(ngModel)]="answerData.status" #status="ngModel" name="status">
+                <option *ngFor="let status of answerStatus" [ngValue]="status">{{status}}</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <input type="number" [(ngModel)]="answerData.prize" #prize="ngModel" name="prize" class="form-control"
+                placeholder="Prize">
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea data-gramm_editor="false" type="text" #comment="ngModel" name="comment" placeholder="Notes" class="form-control"
+              [(ngModel)]="answerData.comment" answer></textarea>
+          </div>
+          <div class="form-btns d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary" [disabled]="!f.valid || disabled">Save</button>
+            <button type="button" class="btn text-dark btn-outline-light bold" (click)="closeModal()">Cancel</button>
+          </div>
+        </form>
+      </app-modal>
+    </div>
+
+    <mat-table [dataSource]="answers">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>#ID</mat-header-cell>
+        <mat-cell *matCellDef="let answer">{{answer.id}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Course name</mat-header-cell>
+        <mat-cell *matCellDef="let answer">{{answer.course.name}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="topic">
+        <mat-header-cell *matHeaderCellDef>Topic</mat-header-cell>
+        <mat-cell *matCellDef="let answer">{{answer.topic.title}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="by">
+        <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
+        <mat-cell *matCellDef="let answer"><span>{{answer.by.name}}</span></mat-cell>
+      </ng-container>
+      <!-- <ng-container matColumnDef="answer">
+        <mat-header-cell *matHeaderCellDef>Answer</mat-header-cell>
+        <mat-cell *matCellDef="let answer">
+          <markdown>{{answer.answer}}</markdown>
+        </mat-cell>
+      </ng-container> -->
+      <ng-container matColumnDef="controls">
+        <mat-header-cell *matHeaderCellDef>View answer</mat-header-cell>
+        <mat-cell *matCellDef="let answer">
+          <span class="text-info view" (click)="answerData = answer; openAddModal = true; header = 'View answer';">View
+            answer</span>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+    <mat-paginator [length]="10" [pageSize]="10" [pageSizeOptions]="[5,10,15,20,25]" [showFirstLastButtons]="true">
+    </mat-paginator>
+
+  </div>
+</div>

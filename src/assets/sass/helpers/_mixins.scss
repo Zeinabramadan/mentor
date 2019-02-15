@@ -1,0 +1,26 @@
+// border-raduis
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin ellipses() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+@mixin rounded($bgColor, $padd, $radius) {
+  display: inline-block;
+  background: $bgColor;
+  padding: $padd;
+  border-radius: $radius;
+  margin-right: 5px;
+  color: #fff;
+}
+
+@mixin customControlBtn() {
+  font-size: 20px;
+  cursor: pointer;
+}

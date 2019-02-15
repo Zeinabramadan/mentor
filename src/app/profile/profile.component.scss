@@ -1,0 +1,61 @@
+@import '../../assets/sass/helpers/0-helpers';
+
+.card {
+
+  .flex {
+    flex: 1 1 0%
+  }
+
+}
+
+.answerMetaTopic {
+  a {
+    color: $second-color;
+  }
+}
+
+.card-subtitle {
+  color: #b8bdc2;
+  margin-top: -.5rem;
+  text-transform: uppercase;
+  font-size: .707rem;
+  font-weight: 500;
+}
+
+.answerMeta {
+  h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .answerMetaCourse {
+    font-size: 14px;
+  }
+}
+
+.date {
+  font-size: 11px;
+}
+
+.content {
+  padding: 8px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+
+  p {
+    margin: 0;
+  }
+}
+
+.badge {
+  font-size: 11px;
+}
+
+.dashContent {
+  height: 80vh;
+}
+
+// .dashIcon {
+//   @include rounded($white, 20px, 50%);
+//   margin-bottom: $margin-20;
+// }

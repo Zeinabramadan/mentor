@@ -1,0 +1,100 @@
+<mat-spinner color="accent" *ngIf="load"></mat-spinner>
+<div *ngIf="data">
+  <section class="dashContent d-flex text-center flex-wrap justify-content-center align-items-center" *ngIf="courses.length == 0">
+    <div class="w-100">
+      <h2 class="w-100">Hi <strong class="text-capitalize mainColor">{{user.name}}!</strong></h2>
+      <p class="mb-0"> Subscribe to some courses, answer some topics.</p>
+      <p>Once you do this page will show you your score and some statics about your performance.</p>
+    </div>
+  </section>
+  <div class="row" *ngIf="courses.length > 0">
+    <div class="col-lg-8 col-md-12">
+      <div class="mb-3">
+        <p class="card-title bold">Answers</p>
+        <p class="card-subtitle">Your score</p>
+      </div>
+      <section class="card p-3 border-0" *ngFor="let answer of totalAnswers">
+        <header>
+          <div class="d-flex justify-content-between mb-2">
+            <div class="answerMeta">
+              <h2 class="answerMetaTopic text-capitalize">
+                <span class="">Topic </span>
+                <a [routerLink]="[
+                    'courses',
+                    answer.course.id,
+                    'topic',
+                    answer.topic.id
+                  ]">{{
+                  answer.topic.title }}</a>
+              </h2>
+              <div class="answerMetaCourse">
+                <span class="text-muted">Course </span>
+                <a [routerLink]="['courses', answer.course.id]">{{
+                  answer.course.name
+                  }}</a>
+              </div>
+            </div>
+            <div>
+              <span class="text-capitalize d-block badge mb-1" [ngClass]="{
+                  'badge-warning': answer.status === 'pending',
+                  'badge-danger': answer.status === 'rejected',
+                  'badge-success': answer.status === 'approved'
+                }">{{
+                answer.status }}</span>
+              <span *ngIf="answer.prize"><img class="coin mr-1" src="../../assets/images/coins.svg" />{{
+                answer.prize
+                }}</span>
+            </div>
+          </div>
+        </header>
+        <div class="content mb-2">
+          <small class="text-muted date"><i class="ti ti-time"></i> {{ answer.createdAt.format }}</small>
+          <markdown>{{ answer.answer }}</markdown>
+        </div>
+        <footer *ngIf="answer.comment">
+          <div>Notes: </div>
+          <markdown>{{ answer.comment }}</markdown>
+        </footer>
+      </section>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <section class="card">
+        <header class="card-header">
+          <div class="media align-items-center">
+            <div class="media-body">
+              <h4 class="card-title">Topics</h4>
+              <p class="card-subtitle">your performance</p>
+            </div>
+          </div>
+        </header>
+
+        <ul class="list-group list-group-fit mb-0">
+          <div *ngFor="let course of courses">
+            <li class="list-group-item border-left-0 border-right-0" *ngFor="let topic of course.topics">
+              <div class="media align-items-center">
+                <div class="media-body">
+                  <a class="text-body" [routerLink]="['courses', course.id, 'topic', topic.id]"><strong>{{ topic.title
+                      }}</strong></a><br />
+                  <div class="d-flex align-items-center">
+                    <small class="text-black-50 text-uppercase mr-2">Course</small>
+                    <a [routerLink]="['courses', course.id]">{{ course.name }}</a>
+                  </div>
+                </div>
+                <div class="media-right text-center d-flex align-items-center">
+                  <!-- <span
+                    class="mr-3"
+                    [ngClass]="{
+                      'text-success': topic.answered,
+                      'text-danger': !topic.answered
+                    }"
+                    >{{ topic.answered }}</span
+                  > -->
+                </div>
+              </div>
+            </li>
+          </div>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>
