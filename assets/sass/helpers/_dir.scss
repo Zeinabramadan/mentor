@@ -1,0 +1,18 @@
+$dir: ltr;
+$left: left;
+$right: right;
+
+@if ($dir==ltr) {
+  $left: left;
+  $right: right;
+}
+
+@else if ($dir==rtl) {
+  $left: right;
+  $right: left;
+}
+
+// body {
+//   direction: $dir;
+//   text-align: $left;
+// }
