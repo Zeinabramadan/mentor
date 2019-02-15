@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,6 @@ export class AnswersService {
   public user;
   public token;
   public httpOptions;
-
-  public answersApi = 'https://hasanzohdy.com/mentor/back/public/api/answers/';
 
   constructor(private http: HttpClient) {}
 
@@ -25,12 +24,15 @@ export class AnswersService {
   }
   getAnswers() {
     this.setHttpOptions();
-    return this.http.get(this.answersApi + 'pending', this.httpOptions);
+    return this.http.get(
+      environment.BASE_URL + 'answers/pending',
+      this.httpOptions
+    );
   }
 
   changeStatus(answerID, answer) {
     return this.http.put(
-      this.answersApi + `pending/${answerID}`,
+      environment.BASE_URL + `answers/pending/${answerID}`,
       answer,
       this.httpOptions
     );

@@ -65,7 +65,6 @@ export class TopicComponent implements OnInit {
       response => {
         this.lesson = response['record'];
         this.serviceTitle.setTitle(`${this.lesson['title']}`);
-        console.log(this.lesson);
         // if (this.lesson['answers']) {
         this.approvedAnswers = this.lesson['answers'].filter(appAnswer => {
           return (
@@ -73,15 +72,9 @@ export class TopicComponent implements OnInit {
           );
         });
         // }
-        console.log(this.approvedAnswers);
-
         this.currentUserAnswer = this.lesson['answers'].filter(item => {
           return item.by.id === this.user['id'];
         });
-        console.log(this.currentUserAnswer);
-        /**
-         * !! back to that stupid function
-         */
         if (this.lesson['answered']) {
           this.startQuest = false;
           // if (this.currentUserAnswer.length > 0) {

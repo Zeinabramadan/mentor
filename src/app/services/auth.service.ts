@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class AuthService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'key SP6YHG56IKLO90MNF4TGAQW23FVBG765'
+      Authorization: `key ${environment.AUTH_KEY}`
     })
   };
   public userToken: string;
@@ -17,19 +18,31 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  public endPoint = 'https://hasanzohdy.com/mentor/back/public/api';
-
   loginUser(user) {
-    return this.http.post(this.endPoint + '/login', user, this.httpOptions);
+    return this.http.post(
+      environment.BASE_URL + 'login',
+      user,
+      this.httpOptions
+    );
   }
 
   register(user) {
-    return this.http.post(this.endPoint + '/register', user, this.httpOptions);
+    return this.http.post(
+      environment.BASE_URL + '/register',
+      user,
+      this.httpOptions
+    );
   }
 
   isLoggedIn() {
-    this.userToken = JSON.parse(localStorage.getItem('user')).accessToken;
-    return !!this.userToken;
+    if (localStorage.getItem('user')) {
+      this.userToken = JSON.parse(localStorage.getItem('user')).accessToken;
+      if (this.userToken) {
+        return !!this.userToken;
+      } else {
+        this.router.navigate(['/login']);
+      }
+    }
   }
 
   logOutUser() {
