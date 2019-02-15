@@ -4,7 +4,7 @@
     <div class="card">
       <div>
         <img class="imgCourse" *ngIf="(course.image | json) !== '{}'" [src]="course.image" [alt]="course.name" />
-        <img class="imgCourse" *ngIf="(course.image | json) == '{}'" src="../../../assets/images/no-img.jpg" [alt]="course.name" />
+        <img class="imgCourse" *ngIf="(course.image | json) == '{}'" src="assets/images/no-img.jpg" [alt]="course.name" />
       </div>
       <div class="courseInfoTitle card-body">
         <a>
@@ -14,7 +14,7 @@
           <span class="courseSingleMeta">
             <i class="ti ti-list"></i>{{ course.topics.length }}</span>
           <span class="courseSingleMeta">
-            <img src="../../../assets/images/coins.svg" class="coin" alt="coins" /> {{course.cost}}</span>
+            <img src="assets/images/coins.svg" class="coin" alt="coins" /> {{course.cost}}</span>
         </div>
       </div>
       <div class="courseInfo">
@@ -30,7 +30,7 @@
           <span class="courseSingleMeta">
             <i class="ti ti-list"></i>{{ course.topics.length }}</span>
           <span class="courseSingleMeta">
-            <img src="../../../assets/images/coins.svg" class="coin" alt="coins" /> {{course.cost}}</span>
+            <img src="assets/images/coins.svg" class="coin" alt="coins" /> {{course.cost}}</span>
         </div>
         <div class="coursePreview">
           <a [routerLink]="[course.id]" class="btn btn-primary btn-block">

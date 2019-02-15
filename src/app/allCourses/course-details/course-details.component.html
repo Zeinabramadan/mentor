@@ -4,8 +4,7 @@
     <header class="courseImage">
       <div class="media">
         <img class="align-self-center mr-3" *ngIf="(course.image | json) !== '{}'" [src]="course.image" [alt]="course.name" />
-        <img class="align-self-center mr-3" *ngIf="(course.image | json) == '{}'" src="../../../assets/images/no-img.jpg"
-          [alt]="course.name" />
+        <img class="align-self-center mr-3" *ngIf="(course.image | json) == '{}'" src="assets/images/no-img.jpg" [alt]="course.name" />
         <div class="media-body">
           <h2 class="mt-0 text-capitalize bold">{{ course.name }}</h2>
           <small class="text-muted"><i class="ti ti-time"></i> {{course.createdAt.format}}</small>
@@ -31,7 +30,7 @@
           <p>{{ lesson.shortDescription }}</p>
           <span class="topicPrize">
             <span class="d-block text-muted">Reward</span>
-            <img src="../../../assets/images/coins.svg" class="coin" alt="coins" /> {{
+            <img src="assets/images/coins.svg" class="coin" alt="coins" /> {{
             lesson.prize }}
           </span>
         </li>
@@ -49,7 +48,7 @@
             <span *ngIf="course.topics.length > 1">Topics</span>
           </span>
           <span class="courseSingleMeta">
-            <img src="../../../assets/images/coins.svg" class="coin" alt="coins" /> {{ course.cost }}</span>
+            <img src="assets/images/coins.svg" class="coin" alt="coins" /> {{ course.cost }}</span>
         </div>
         <div class="text-center">
           <button [innerHTML]="applyText" class="btn btn-primary text-uppercase" (click)="takeCourse()" [disabled]="disableBtn">

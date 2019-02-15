@@ -83,7 +83,7 @@
         <mat-header-cell *matHeaderCellDef>Image</mat-header-cell>
         <mat-cell *matCellDef="let course">
           <img *ngIf="(course.image | json) !== '{}'" [src]="course.image" [alt]="course.name" />
-          <img *ngIf="(course.image | json) == '{}'" src="../../../assets/images/no-img.jpg" [alt]="course.name" />
+          <img *ngIf="(course.image | json) == '{}'" src="assets/images/no-img.jpg" [alt]="course.name" />
         </mat-cell>
       </ng-container>
 
