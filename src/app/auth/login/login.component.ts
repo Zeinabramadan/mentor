@@ -31,11 +31,7 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser(this.userLoginData).subscribe(
       response => {
         localStorage.setItem('user', JSON.stringify(response['user']));
-        // if (response['user']['accountType'] === 'admin') {
-        this.router.navigate(['/admin']);
-        // } else {
-        this.router.navigate(['/dashboard']);
-        // }
+        this.router.navigate(['/']);
       },
       error => {
         this.error = true;

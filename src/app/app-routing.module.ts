@@ -23,21 +23,9 @@ const AppRoutes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    canActivate: [AuthAdminGuard],
-    children: [
-      { path: '', component: ProfileComponent },
-      { path: 'admin/users', component: UsersComponent },
-      { path: 'admin/answers', component: AnswersComponent },
-      { path: 'admin/courses', component: AdminCoursesComponent },
-      { path: 'admin/courses/:id/topics', component: AdminLessonsComponent }
-    ]
-  },
-  {
-    path: '',
-    component: LayoutComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'dashboard', component: ProfileComponent },
+      { path: '', component: ProfileComponent },
       { path: 'dashboard/courses', component: CoursesComponent },
       { path: 'dashboard/my-courses', component: UserCoursesComponent },
       {
@@ -45,6 +33,18 @@ const AppRoutes: Routes = [
         component: TopicComponent
       },
       { path: 'dashboard/courses/:id', component: CourseDetailsComponent }
+    ]
+  },
+  {
+    path: '',
+    component: LayoutComponent,
+    canActivate: [AuthAdminGuard],
+    children: [
+      { path: '', component: ProfileComponent },
+      { path: 'admin/users', component: UsersComponent },
+      { path: 'admin/answers', component: AnswersComponent },
+      { path: 'admin/courses', component: AdminCoursesComponent },
+      { path: 'admin/courses/:id/topics', component: AdminLessonsComponent }
     ]
   },
   { path: '404', component: NotFoundComponent },
